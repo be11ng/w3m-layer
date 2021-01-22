@@ -97,7 +97,7 @@
           "$" 'evil-end-of-line
           "f" 'evil-find-char
           "F" 'evil-find-char-backward
-          "o" 'ace-link-eww
+          "o" 'ace-link-w3m
           "wp" 'v/w3m-player-movie
           "wy" 'v/w3m-copy-link
           "wf" 'w3m-find-file
