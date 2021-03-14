@@ -164,7 +164,6 @@
     :init
     (progn
       (setq browse-url-browser-function 'w3m-goto-url-new-session
-            w3m-user-agent "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533."
             w3m-coding-system 'utf-8
             w3m-file-coding-system 'utf-8
             w3m-file-name-coding-system 'utf-8
