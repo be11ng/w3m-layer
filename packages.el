@@ -83,41 +83,76 @@
   (use-package w3m
     :defer t
     :init
-    (spacemacs/set-leader-keys
-      "awo" 'v/w3m-open-url
-      "awf" 'w3m-find-file
-      "aws" 'w3m-search
-      )
     (progn
-        (evilified-state-evilify-map w3m-mode-map
-          :mode w3m-mode
-          :eval-after-load w3m
-          :bindings
-          "0" 'evil-digit-argument-or-evil-beginning-of-line
-          "$" 'evil-end-of-line
-          "f" 'evil-find-char
-          "F" 'evil-find-char-backward
-          "o" 'ace-link-w3m
-          "wp" 'v/w3m-player-movie
-          "wy" 'v/w3m-copy-link
-          "wf" 'w3m-find-file
-          "wo" 'v/w3m-open-url
-          "wO" 'v/w3m-open-url-new-session
-          "wt" 'w3m-view-this-url-new-session
-          "wT" 'w3m-create-empty-session
-          "ws" 'w3m-search
-          "wS" 'w3m-search-new-session
-          "wl" 'w3m-next-buffer
-          "wh" 'w3m-previous-buffer
-          "wx" 'w3m-delete-buffer
-          "wd" 'v/w3m-save-buffer-to-file
-          "wD" 'w3m-save-buffer
-          "we" 'w3m-bookmark-edit
-          "wa" 'w3m-bookmark-add-current-url
-          "wm" 'w3m-view-url-with-external-browser
-          "wb" 'helm-w3m-bookmarks
-          "wB" 'w3m-bookmark-view
-        ))))
+      (spacemacs/declare-prefix "aw" "w3m")
+      (spacemacs/set-leader-keys
+        "awo" 'v/w3m-open-url
+        "awf" 'w3m-find-file
+        "aws" 'w3m-search)
+      (spacemacs/declare-prefix-for-mode 'w3m-mode "mt" "toggles")
+      (spacemacs/set-leader-keys-for-major-mode 'w3m-mode
+        ;; "ti" 'w3m-toggle-inline-image
+        ;; "tI" 'w3m-toggle-inline-images
+
+        "p" 'v/w3m-player-movie
+        "y" 'v/w3m-copy-link
+        "f" 'w3m-find-file
+
+        "o" 'v/w3m-open-url
+        "O" 'v/w3m-open-url-new-session
+        "t" 'w3m-view-this-url-new-session
+        "T" 'w3m-create-empty-session
+
+        "s" 'w3m-search
+        "S" 'w3m-search-new-session
+        "l" 'w3m-next-buffer
+
+        "h" 'w3m-previous-buffer
+        "x" 'w3m-delete-buffer
+        "d" 'v/w3m-save-buffer-to-file
+        "D" 'w3m-save-buffer))
+    (progn
+      (evilified-state-evilify-map w3m-mode-map
+        :mode w3m-mode
+        :eval-after-load w3m
+        :bindings
+        "0" 'evil-digit-argument-or-evil-beginning-of-line
+        "$" 'evil-end-of-line
+        "f" 'evil-find-char
+        "F" 'evil-find-char-backward
+
+        "o" 'ace-link-w3m
+
+        "]]" 'w3m-next-form
+        "[[" 'w3m-previous-form
+
+        "H" 'w3m-view-previous-page
+        "L" 'w3m-view-next-page
+        "^" 'w3m-view-parent-page
+
+        "gf" 'w3m-view-source
+        "gh" 'w3m-view-header
+
+        "d" 'w3m-download-this-url
+        "M-d" 'w3m-download
+
+        "I" 'w3m-view-image
+        "M-i" 'w3m-save-image
+        "mti" 'w3m-toggle-inline-image
+        "mtI" 'w3m-toggle-inline-images
+
+        "ge" 'w3m-bookmark-edit
+        "ga" 'w3m-bookmark-add-current-url
+        "gm" 'w3m-view-url-with-external-browser
+        "gb" 'helm-w3m-bookmarks
+        "gB" 'w3m-bookmark-view
+
+        "gr" 'w3m-reload-this-page
+        "gR" 'w3m-reload-all-pages
+
+        "q" 'w3m-close-window
+        "ZQ" 'w3m-quit
+        "ZZ" 'quit-window))))
 
 (with-eval-after-load 'w3m
   (define-key w3m-mode-map (kbd "C-f") 'evil-scroll-page-down)
